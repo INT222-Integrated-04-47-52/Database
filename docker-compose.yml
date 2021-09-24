@@ -1,0 +1,20 @@
+version: '3'
+services:
+  database:
+    container_name: database_con
+    build: .
+    image: database
+    environment: 
+      MYSQL_ROOT_USER: root
+      MYSQL_ROOT_PASSWORD: MKtorn044752
+      MYSQL_DATABASE: Mongkolthorn
+    volumes:
+      - "./scriptMKT/MKT.sql:/docker-entrypoint-initdb.d/MKT.sql"
+      # - "./scriptMKT/privilege.sql:/docker-entrypoint-initdb.d/privilege.sql"
+    ports:
+      - "3306:3306"
+
+networks:
+    default:
+        external:
+            name: network
